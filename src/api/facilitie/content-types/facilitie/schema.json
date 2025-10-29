@@ -4,7 +4,7 @@
   "info": {
     "singularName": "facilitie",
     "pluralName": "facilities",
-    "displayName": "facilitie"
+    "displayName": "Faculties"
   },
   "options": {
     "draftAndPublish": true
@@ -13,12 +13,6 @@
   "attributes": {
     "Name": {
       "type": "string"
-    },
-    "department": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::department.department",
-      "inversedBy": "facilities"
     },
     "Designation": {
       "type": "string"
@@ -30,9 +24,6 @@
       "type": "email",
       "required": true,
       "unique": true
-    },
-    "Mobile": {
-      "type": "integer"
     },
     "AadharNum": {
       "type": "integer"
@@ -74,6 +65,20 @@
     },
     "Description": {
       "type": "text"
+    },
+    "Departments": {
+      "type": "enumeration",
+      "enum": [
+        "CSE",
+        "ECE",
+        "EEE",
+        "Civil",
+        "ME",
+        "MBA"
+      ]
+    },
+    "Mobile": {
+      "type": "string"
     }
   }
 }
