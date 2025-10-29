@@ -25,9 +25,6 @@
       "required": true,
       "unique": true
     },
-    "AadharNum": {
-      "type": "integer"
-    },
     "PAN": {
       "type": "string"
     },
@@ -78,6 +75,24 @@
       ]
     },
     "Mobile": {
+      "type": "string"
+    },
+    "SSC": {
+      "type": "string"
+    },
+    "INTERMEDIATE": {
+      "type": "string"
+    },
+    "UG": {
+      "type": "string"
+    },
+    "PG": {
+      "type": "string"
+    },
+    "PhD": {
+      "type": "string"
+    },
+    "AadharNum": {
       "type": "string"
     }
   }

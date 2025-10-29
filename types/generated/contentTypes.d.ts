@@ -501,7 +501,7 @@ export interface ApiFacilitieFacilitie extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    AadharNum: Schema.Attribute.Integer;
+    AadharNum: Schema.Attribute.String;
     Address: Schema.Attribute.String;
     Caste: Schema.Attribute.String;
     City: Schema.Attribute.String;
@@ -518,6 +518,7 @@ export interface ApiFacilitieFacilitie extends Struct.CollectionTypeSchema {
     Email: Schema.Attribute.Email &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
+    INTERMEDIATE: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -527,10 +528,14 @@ export interface ApiFacilitieFacilitie extends Struct.CollectionTypeSchema {
     Mobile: Schema.Attribute.String;
     Name: Schema.Attribute.String;
     PAN: Schema.Attribute.String;
+    PG: Schema.Attribute.String;
+    PhD: Schema.Attribute.String;
     Photo: Schema.Attribute.Media<'images'>;
     publishedAt: Schema.Attribute.DateTime;
     Resume: Schema.Attribute.Media<'files'>;
+    SSC: Schema.Attribute.String;
     State: Schema.Attribute.String;
+    UG: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
