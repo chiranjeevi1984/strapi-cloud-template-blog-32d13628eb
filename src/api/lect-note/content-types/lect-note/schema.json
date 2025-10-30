@@ -1,0 +1,70 @@
+{
+  "kind": "collectionType",
+  "collectionName": "lect_notes",
+  "info": {
+    "singularName": "lect-note",
+    "pluralName": "lect-notes",
+    "displayName": "Lecture Notes"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "BTech": {
+      "type": "enumeration",
+      "enum": [
+        "First",
+        "Second",
+        "Third",
+        "Final"
+      ]
+    },
+    "Departments": {
+      "type": "enumeration",
+      "enum": [
+        "CSE",
+        "AI",
+        "CS",
+        "ECE",
+        "EEE",
+        "Civil",
+        "ME",
+        "MBA"
+      ]
+    },
+    "Sem": {
+      "type": "enumeration",
+      "enum": [
+        "One",
+        "Two",
+        "Three",
+        "Four",
+        "Five",
+        "Six",
+        "Seven",
+        "Eight"
+      ]
+    },
+    "SubjectCode": {
+      "type": "string"
+    },
+    "SubjectName": {
+      "type": "string"
+    },
+    "TheoryNotes": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "files"
+      ]
+    },
+    "TheoryLabs": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "files"
+      ]
+    }
+  }
+}
