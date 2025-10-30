@@ -67,6 +67,8 @@
       "type": "enumeration",
       "enum": [
         "CSE",
+        "AI",
+        "CS",
         "ECE",
         "EEE",
         "Civil",

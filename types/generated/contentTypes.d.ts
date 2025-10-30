@@ -510,7 +510,7 @@ export interface ApiFacilitieFacilitie extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     Departments: Schema.Attribute.Enumeration<
-      ['CSE', 'ECE', 'EEE', 'Civil', 'ME', 'MBA']
+      ['CSE', 'AI', 'CS', 'ECE', 'EEE', 'Civil', 'ME', 'MBA']
     >;
     Description: Schema.Attribute.Text;
     Designation: Schema.Attribute.String;
@@ -569,6 +569,44 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     siteDescription: Schema.Attribute.Text & Schema.Attribute.Required;
     siteName: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiLectNoteLectNote extends Struct.CollectionTypeSchema {
+  collectionName: 'lect_notes';
+  info: {
+    displayName: 'Lecture Notes';
+    pluralName: 'lect-notes';
+    singularName: 'lect-note';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    BTech: Schema.Attribute.Enumeration<['First', 'Second', 'Third', 'Final']>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Departments: Schema.Attribute.Enumeration<
+      ['CSE', 'AI', 'CS', 'ECE', 'EEE', 'Civil', 'ME', 'MBA']
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::lect-note.lect-note'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    Sem: Schema.Attribute.Enumeration<
+      ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight']
+    >;
+    SubjectCode: Schema.Attribute.String;
+    SubjectName: Schema.Attribute.String;
+    TheoryLabs: Schema.Attribute.Media<'files'>;
+    TheoryNotes: Schema.Attribute.Media<'files'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1030,7 +1068,6 @@ export interface PluginUsersPermissionsUser
   };
   options: {
     draftAndPublish: false;
-    timestamps: true;
   };
   attributes: {
     blocked: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
@@ -1039,6 +1076,9 @@ export interface PluginUsersPermissionsUser
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Departments: Schema.Attribute.Enumeration<
+      ['CSE', 'AI', 'CS', 'ECE', 'EEE', 'Civil', 'ME', 'MBA']
+    >;
     email: Schema.Attribute.Email &
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMaxLength<{
@@ -1089,6 +1129,7 @@ declare module '@strapi/strapi' {
       'api::author.author': ApiAuthorAuthor;
       'api::facilitie.facilitie': ApiFacilitieFacilitie;
       'api::global.global': ApiGlobalGlobal;
+      'api::lect-note.lect-note': ApiLectNoteLectNote;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
