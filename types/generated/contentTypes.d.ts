@@ -459,6 +459,43 @@ export interface ApiAboutAbout extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiActivitieActivitie extends Struct.CollectionTypeSchema {
+  collectionName: 'activities';
+  info: {
+    displayName: 'Activities';
+    pluralName: 'activities';
+    singularName: 'activitie';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    AcademicYear: Schema.Attribute.String;
+    ActivityType: Schema.Attribute.Enumeration<['Faculty', 'Student']>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Date: Schema.Attribute.String;
+    Departments: Schema.Attribute.Enumeration<
+      ['CSE', 'AI', 'CS', 'ECE', 'EEE', 'Civil', 'ME', 'MBA']
+    >;
+    EventName: Schema.Attribute.String;
+    EventTopic: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::activitie.activitie'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    Resource: Schema.Attribute.String;
+    Stdyear: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
   collectionName: 'authors';
   info: {
@@ -1126,6 +1163,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::about.about': ApiAboutAbout;
+      'api::activitie.activitie': ApiActivitieActivitie;
       'api::author.author': ApiAuthorAuthor;
       'api::facilitie.facilitie': ApiFacilitieFacilitie;
       'api::global.global': ApiGlobalGlobal;
