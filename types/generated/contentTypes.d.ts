@@ -496,6 +496,45 @@ export interface ApiActivitieActivitie extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAdmissionEnquiryAdmissionEnquiry
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'admission_enquiries';
+  info: {
+    displayName: 'Admission Enquiry';
+    pluralName: 'admission-enquiries';
+    singularName: 'admission-enquiry';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    agree: Schema.Attribute.Boolean;
+    branch: Schema.Attribute.String;
+    courses: Schema.Attribute.Enumeration<['Intermediate', 'Undergraduate']>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Email: Schema.Attribute.Email & Schema.Attribute.Required;
+    Gender: Schema.Attribute.Enumeration<['Male', 'Female']>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::admission-enquiry.admission-enquiry'
+    > &
+      Schema.Attribute.Private;
+    Name: Schema.Attribute.String & Schema.Attribute.Required;
+    phnoe_num: Schema.Attribute.Integer;
+    place_name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    statu: Schema.Attribute.Enumeration<
+      ['active', 'responded', 'closed', 'waiting']
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
   collectionName: 'authors';
   info: {
@@ -1164,6 +1203,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::about.about': ApiAboutAbout;
       'api::activitie.activitie': ApiActivitieActivitie;
+      'api::admission-enquiry.admission-enquiry': ApiAdmissionEnquiryAdmissionEnquiry;
       'api::author.author': ApiAuthorAuthor;
       'api::facilitie.facilitie': ApiFacilitieFacilitie;
       'api::global.global': ApiGlobalGlobal;
