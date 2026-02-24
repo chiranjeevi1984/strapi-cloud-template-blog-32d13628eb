@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "admission_enquiries",
+  "info": {
+    "singularName": "admission-enquiry",
+    "pluralName": "admission-enquiries",
+    "displayName": "Admission Enquiry"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "required": true
+    },
+    "Email": {
+      "type": "email",
+      "required": true
+    },
+    "Gender": {
+      "type": "enumeration",
+      "enum": [
+        "Male",
+        "Female"
+      ]
+    },
+    "phnoe_num": {
+      "type": "integer"
+    },
+    "place_name": {
+      "type": "string"
+    },
+    "courses": {
+      "type": "enumeration",
+      "enum": [
+        "Intermediate",
+        "Undergraduate"
+      ]
+    },
+    "branch": {
+      "type": "string"
+    },
+    "statu": {
+      "type": "enumeration",
+      "enum": [
+        "active",
+        "responded",
+        "closed",
+        "waiting"
+      ]
+    },
+    "agree": {
+      "type": "boolean"
+    }
+  }
+}
